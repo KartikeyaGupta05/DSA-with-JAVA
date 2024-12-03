@@ -1,24 +1,61 @@
 public class Practice {
-    public static void bubbleSort(int a[]){
-        for (int i = 0; i < a.length - 1; i++) {
-            for (int j = 0; j < a.length - 1 - i; j++) {
-                if (a[j] < a[j+1]) {
-                    int temp = a[j];
-                    a[j] = a[j - 1];
-                    a[j - 1] = temp;
-                } else{
+    public static int[] bubbleSort_DecreasingOrder(int arr[]) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] < arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                } else {
                     continue;
                 }
             }
         }
+        return arr;
+    }
+
+    public static int[] selectionSort_DecreasingOrder(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            int maxpos = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[maxpos] < arr[j])
+                    maxpos = j;
+            }
+            int temp = arr[maxpos];
+            arr[maxpos] = arr[i];
+            arr[i] = temp;
+        }
+        return arr;
+    }
+
+    public static int[] insertionSort_DecreasingOrder(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] < arr[j]) {
+                    int temp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = temp;
+                } else 
+                    continue;
+            }
+        }
+        return arr;
+    }
+
+    public static void print(int[] a){
         System.out.print("Sorted array is = ");
         for (int i : a) {
             System.out.print(i + " ");
         }
-        
+        System.err.println();
     }
+
     public static void main(String[] args) {
-        int[] a = {3, 6, 2, 1, 8, 7, 4, 5, 3, 1};
-        bubbleSort(a);
+        int[] arr = { 2, 32, 54, 76, 43, 56, 86 };
+        
+        print(bubbleSort_DecreasingOrder(arr));
+        print(selectionSort_DecreasingOrder(arr));
+        print(insertionSort_DecreasingOrder(arr));
+        
     }
 }
