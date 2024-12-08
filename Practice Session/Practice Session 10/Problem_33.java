@@ -25,7 +25,6 @@ public class Problem_33{
         while (left <= right) {
             int mid = (left + right) / 2;
             int realMid = (mid + shift) % n;
-
             if(nums[realMid] == target){
                 System.out.println("Element is at position " + realMid);
                 return;
