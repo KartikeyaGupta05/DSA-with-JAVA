@@ -11,7 +11,7 @@ public class Print_X_Power {
         if (pow == 0) {
             return 1;
         }
-        // int halfPowerSq = optimized_method(x, pow / 2) * optimized_method(x, pow / 2);   // this more complex because we call function for two times
+        // int halfPowerSq = optimized_method(x, pow / 2) * optimized_method(x, pow / 2);   // this more complex because we call function for two times . Its time complexity is O(n)
 
         int halfPower = optimized_method(x, pow / 2);
         int halfPowerSq = halfPower * halfPower;
