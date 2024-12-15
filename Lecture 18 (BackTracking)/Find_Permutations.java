@@ -3,7 +3,7 @@ public class Find_Permutations {
     public static void findpermutations(String str, String ans){  // Time complexity is O(n * n!)
         // base case 
         if (str.length() == 0) {
-            System.err.println(ans);
+            System.out.println(ans);
             return;
         }
 

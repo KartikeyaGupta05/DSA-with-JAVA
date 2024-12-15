@@ -36,8 +36,8 @@ public class Backtracking_on_Arrays {
     }
     public static void main(String[] args) {
         int arr[] = new int[5];
-        // changeArray(arr, 0, 1);
-        // printArr(arr);
+        changeArray(arr, 0, 1);
+        printArr(arr);
 
         String str = "abcdefghi";
         findSubsets(str, "", 0);

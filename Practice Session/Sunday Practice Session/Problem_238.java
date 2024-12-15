@@ -49,7 +49,7 @@ public class Problem_238 {
         // }
 
         // WRITE OPTIMIZED CODE BY YOURSELF
-        int[] nums = { 1, 2, 3, 4, 5 };
+        int[] nums = { 1, 2, 0, 4, 5 };
 
         int n = nums.length;
         int[] res = new int[n];
