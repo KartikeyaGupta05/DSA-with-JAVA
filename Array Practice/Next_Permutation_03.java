@@ -19,66 +19,38 @@ Constraints:
 1 <= nums.length <= 100
 0 <= nums[i] <= 100 */
 
-// case 1
-// * [1,2,3], [2, 1, 3], [3,1,2],
-
-// case 2   
-// * [1,3,2], [2, 3, 1]    -> [1, 3, 2] -> start < last -> [2, 1, 3]
-
-// case 3
-// * [3,2,1]
-
-
 public class Next_Permutation_03 {
     public static void nextPermutation(int[] nums) {
-        int start = 0;
-        int last = nums.length - 1;
-        int mid = (start + last) / 2;
+        final int n = nums.length;
 
+        // From back to front, find the first number < nums[i + 1].
+        int i;
+        for (i = n - 2; i >= 0; --i)
+            if (nums[i] < nums[i + 1])
+                break;
 
-        // case 1
-        if (nums[start] >= nums[mid] && nums[mid] >= nums[last]) {
-            int temp = nums[start];
-            nums[start] = nums[last];
-            nums[last] = temp;
-        }
+        // From back to front, find the first number > nums[i], swap it with
+        // nums[i].
+        if (i >= 0)
+            for (int j = n - 1; j > i; --j)
+                if (nums[j] > nums[i]) {
+                    swap(nums, i, j);
+                    break;
+                }
 
-        else if (nums[start] == nums[last]) {
-            int temp = nums[start];
-            nums[start] = nums[mid];
-            nums[mid] = temp;
-        }
+        // Reverse nums[i + 1..n - 1].
+        reverse(nums, i + 1, n - 1);
+    }
 
-        // case 2
-        else if (nums[mid] < nums[last]) {
-            int temp = nums[mid];
-            nums[mid] = nums[last];
-            nums[last] = temp;
-        }
+    private static void reverse(int[] nums, int l, int r) {
+        while (l < r)
+            swap(nums, l++, r--);
+    }
 
-        // case 3
-        else if (nums[mid] > nums[last]) {
-            if (nums[start] <= nums[last]) {
-                int temp = nums[mid];
-                nums[mid] = nums[last];
-                nums[last] = temp;
-
-                temp = nums[mid];
-                nums[mid] = nums[start];
-                nums[start] = temp;
-
-            } else if (nums[start] > nums[last]) {
-                int temp = nums[mid];
-                nums[mid] = nums[start];
-                nums[start] = temp;
-
-                temp = nums[mid];
-                nums[mid] = nums[last];
-                nums[last] = temp;
-            }
-        }
-
-        
+    private static void swap(int[] nums, int i, int j) {
+        final int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 
     public static void main(String[] args) {
@@ -90,3 +62,54 @@ public class Next_Permutation_03 {
         }
     }
 }
+
+/*
+ * MY SOLUTION OR LOGIC 😁😁
+ * int start = 0;
+ * int last = nums.length - 1;
+ * int mid = (start + last) / 2;
+ * 
+ * 
+ * // case 1
+ * if (nums[start] >= nums[mid] && nums[mid] >= nums[last]) {
+ * int temp = nums[start];
+ * nums[start] = nums[last];
+ * nums[last] = temp;
+ * }
+ * 
+ * else if (nums[start] == nums[last]) {
+ * int temp = nums[start];
+ * nums[start] = nums[mid];
+ * nums[mid] = temp;
+ * }
+ * 
+ * // case 2
+ * else if (nums[mid] < nums[last]) {
+ * int temp = nums[mid];
+ * nums[mid] = nums[last];
+ * nums[last] = temp;
+ * }
+ * 
+ * // case 3
+ * else if (nums[mid] > nums[last]) {
+ * if (nums[start] <= nums[last]) {
+ * int temp = nums[mid];
+ * nums[mid] = nums[last];
+ * nums[last] = temp;
+ * 
+ * temp = nums[mid];
+ * nums[mid] = nums[start];
+ * nums[start] = temp;
+ * 
+ * } else if (nums[start] > nums[last]) {
+ * int temp = nums[mid];
+ * nums[mid] = nums[start];
+ * nums[start] = temp;
+ * 
+ * temp = nums[mid];
+ * nums[mid] = nums[last];
+ * nums[last] = temp;
+ * }
+ * }
+ * 
+ */

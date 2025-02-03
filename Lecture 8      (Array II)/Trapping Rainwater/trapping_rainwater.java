@@ -37,3 +37,35 @@ public class trapping_rainwater {
         System.out.println("Trapped water is = " + trapped_water);  // Result print karo
     }
 }
+
+
+
+/*
+ * OPTIMIZED CODE 
+       int left = 0;
+        int leftMax = 0;
+        int right = height.length - 1;
+        int rightMax = 0;
+        int result = 0;
+
+        while (left < right) {
+            if (height[left] < height[right]) {
+                if (height[left] > leftMax) {
+                    leftMax = height[left];
+                } else {
+                    result = result + leftMax - height[left];
+                }
+                left++;
+            } else {
+                if (height[right] > rightMax) {
+                    rightMax = height[right];
+                } else {
+                    result = result + rightMax - height[right];
+                }
+                right--;
+            }
+        }
+
+        return result;
+    }
+ */

@@ -26,6 +26,7 @@ public class Max_Subarray_Sum {
 
     // Optimized approach using prefix sum to calculate maximum subarray sum
     public static int Prefix_Subarray_Sum(int arr[]) {
+        // 1,2,3
         int currSum = 0, maxSum = Integer.MIN_VALUE;
         int prefix[] = new int[arr.length];
 
