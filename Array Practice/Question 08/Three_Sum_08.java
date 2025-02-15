@@ -36,7 +36,7 @@ public class Three_Sum_08 {
         for (int i = 0; i < nums.length - 2; i++) {
             Set<Integer> seen = new HashSet<>();
             for (int j = i + 1; j < nums.length; j++) {
-                int complement = -nums[i] - nums[j];  // Find the third number
+                int complement = - (nums[i] + nums[j]);  // Find the third number
                 
                 if (seen.contains(complement)) {
                     result.add(Arrays.asList(nums[i], nums[j], complement));
@@ -44,7 +44,6 @@ public class Three_Sum_08 {
                 seen.add(nums[j]);  // Store current number for lookup
             }
         }
-
         return new ArrayList<>(result);
     }
 
